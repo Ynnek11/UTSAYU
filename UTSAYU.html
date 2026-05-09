@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Akses Akun</title>
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+
+        .form-content {
+            display: none;
+        }
+
+
+        .form-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #2a5298;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2a5298;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1e3c72;
+        }
+
+        .toggle-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        .toggle-link a {
+            color: #2a5298;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .toggle-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-card">
+        
+
+        <div id="loginForm" class="form-content active">
+            <h2>Masuk</h2>
+            <form>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="email@anda.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Kata Sandi</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="toggle-link">
+                <p>Lupa sandi? <a href="#" onclick="showForm('forgotForm')">Klik di sini</a></p>
+                <p>Belum punya akun? <a href="#" onclick="showForm('registerForm')">Daftar</a></p>
+            </div>
+        </div>
+
+
+        <div id="registerForm" class="form-content">
+            <h2>Buat Akun</h2>
+            <form>
+                <div class="input-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" placeholder="Nama Anda" required>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="email@anda.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Kata Sandi</label>
+                    <input type="password" placeholder="Min. 8 Karakter" required>
+                </div>
+                <button type="submit">Daftar Sekarang</button>
+            </form>
+            <div class="toggle-link">
+                <p>Sudah punya akun? <a href="#" onclick="showForm('loginForm')">Login</a></p>
+            </div>
+        </div>
+
+    
+        <div id="forgotForm" class="form-content">
+            <h2>Atur Ulang Sandi</h2>
+            <p style="font-size: 12px; color: #666; text-align: center; margin-bottom: 15px;">
+                Kami akan mengirimkan link pemulihan ke email Anda.
+            </p>
+            <form>
+                <div class="input-group">
+                    <label>Email Terdaftar</label>
+                    <input type="email" placeholder="email@anda.com" required>
+                </div>
+                <button type="submit">Kirim Link</button>
+            </form>
+            <div class="toggle-link">
+                <p><a href="#" onclick="showForm('loginForm')">Kembali ke Login</a></p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+ 
+        function showForm(formId) {
+        
+            const forms = document.querySelectorAll('.form-content');
+            forms.forEach(form => form.classList.remove('active'));
+
+          
+            document.getElementById(formId).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
